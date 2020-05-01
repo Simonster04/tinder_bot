@@ -9,7 +9,7 @@ Create a virtual enviroment fo executing the code.
 - Download chromedriver, unzip, move to /usr/local/bin (Mac OS / Linux)
 
 - Install `selenium` package:
-```python
+```
 pip install selenium```
 
 

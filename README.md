@@ -3,9 +3,18 @@
 The idea of this project is to automate likes (Tinder working for its own).
 
 ## Recomendations:
-Create a virtual enviroment fo executing the code.
+Create a virtual enviroment fo executing the code:
+
+- `cd` to the folder you want to install the bot in
+
+- `pip install virtualenv`
+
+- `virtualenv venv`
+
+- `source venv/bin/activate`
 
 ## Usage:
+
 - Download chromedriver, unzip, move to /usr/local/bin (Mac OS / Linux)
 
 - Install `selenium` package:

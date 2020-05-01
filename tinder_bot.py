@@ -113,8 +113,8 @@ class TinderBot():
         while x == 1:
             sleep(0.5)
             try:
-                coin = np.random.binomial(n=1, p=0.7, size=None)
-                if coin == 1:
+                like = np.random.binomial(n=1, p=0.7, size=None)
+                if like == 1:
                     self.like()
                 else:
                     self.dislike()

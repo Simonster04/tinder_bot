@@ -4,13 +4,17 @@ from credentials import username, password
 
 
 class TinderBot():
+    """Class with all the methods to automate the bot"""
 
     def __init__(self):
+        """Initialize Tinder Bot:
+        Opening Chrome"""
         options = webdriver.ChromeOptions()
         options.add_argument("--start-maximized")
         self.driver = webdriver.Chrome(chrome_options=options)
 
     def login(self):
+        """Enter the credentials and close gps and notifications popups"""
         self.driver.get('https://tinder.com')
         sleep(9)
 
@@ -26,19 +30,19 @@ class TinderBot():
         fb_btn.click()
         sleep(5)
 
-        # switch to login popup
+        """switch to login popup"""
         base_window = self.driver.window_handles[0]
         popup = self.driver.switch_to_window(self.driver.window_handles[1])
 
-        # enter email
+        """enter email"""
         email_in = self.driver.find_element_by_xpath('//*[@id="email"]')
         email_in.send_keys(username)
 
-        # enter password
+        """enter password"""
         password_in = self.driver.find_element_by_xpath('//*[@id="pass"]')
         password_in.send_keys(password)
 
-        # login click
+        """login click"""
         login_btn = self.driver.find_element_by_xpath('//*[@id="u_0_0"]')
         login_btn.click()
 
@@ -62,21 +66,25 @@ class TinderBot():
             pass
 
     def like(self):
+        """Click Like button"""
         like_btn = self.driver.find_element_by_xpath(
             '//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button')
         like_btn.click()
 
     def dislike(self):
+        """Click Dislike button"""
         dislike_btn = self.driver.find_element_by_xpath(
             '//*[@id="content"]/div/div[1]/div/div/main/div/div[1]/div/div[2]/div[4]/button')
         dislike_btn.click()
 
     def super_like(self):
+        """Click Superlike button"""
         superlike = self.driver.find_element_by_xpath(
             '//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[3]/div/div/div/button')
         superlike.click()
 
     def auto_swipe(self):
+        """Click Like button undefinitely (50 times in a free version Tinder account)"""
         x = 1
         while x == 1:
             sleep(0.5)
@@ -93,6 +101,8 @@ class TinderBot():
                         x = 0
 
     def auto_super(self):
+        """Click Superlike button once. Then, click Like button undefinitely
+        (50 times in a free version Tinder account)"""
         self.super_like()
         x = 1
         while x == 1:
@@ -107,16 +117,19 @@ class TinderBot():
                     x = 0
 
     def close_popup(self):
+        """Close popup"""
         popup = self.driver.find_element_by_xpath(
             '//*[@id="modal-manager"]/div/div/div[2]/button[2]')
         popup.click()
 
     def close_match(self):
+        """Close match popup"""
         match_popup = self.driver.find_element_by_xpath(
             '//*[@id="modal-manager-canvas"]/div/div/div[1]/div/div[3]/a')
         match_popup.click()
 
     def close_offer(self):
+        """Close offer popup"""
         try:
             offer_popup = self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager"]/div/div/div[3]/button[2]')

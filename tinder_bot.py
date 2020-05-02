@@ -55,12 +55,10 @@ class TinderBot():
         self.driver.switch_to_window(base_window)
         sleep(10)
 
-        popup_gps = self.driver.find_element_by_xpath(
-            '//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
+        popup_gps = self.driver.find_element_by_css_selector('button[aria-label="Allow"]')
         popup_gps.click()
 
-        popup_notif = self.driver.find_element_by_xpath(
-            '//*[@id="modal-manager"]/div/div/div/div/div[3]/button[1]')
+        popup_notif = self.driver.find_element_by_css_selector('button[aria-label="Enable"]')
         popup_notif.click()
 
         sleep(10)
@@ -73,21 +71,15 @@ class TinderBot():
 
     def like(self):
         """Click Like button"""
-        like_btn = self.driver.find_element_by_xpath(
-            '//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[4]/button')
-        like_btn.click()
+        self.driver.find_element_by_css_selector('button[aria-label="Like"]').click()
 
     def dislike(self):
         """Click Dislike button"""
-        dislike_btn = self.driver.find_element_by_xpath(
-            '//*[@id="content"]/div/div[1]/div/div/main/div/div[1]/div/div[2]/div[4]/button')
-        dislike_btn.click()
+        self.driver.find_element_by_css_selector('button[aria-label="Nope"]').click()
 
     def super_like(self):
         """Click Superlike button"""
-        superlike = self.driver.find_element_by_xpath(
-            '//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div/div[2]/div[3]/div/div/div/button')
-        superlike.click()
+        self.driver.find_element_by_css_selector('button[aria-label="Super Like"]').click()
 
     def auto_swipe(self):
         """Click Like button undefinitely (50 times in a free version Tinder account)"""
@@ -167,22 +159,21 @@ class TinderBot():
 
     def close_popup(self):
         """Close popup"""
-        popup = self.driver.find_element_by_xpath(
-            '//*[@id="modal-manager"]/div/div/div[2]/button[2]')
-        popup.click()
+        self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div[2]/button[2]').click()
 
     def close_match(self):
         """Close match popup"""
-        match_popup = self.driver.find_element_by_xpath(
-            '//*[@id="modal-manager-canvas"]/div/div/div[1]/div/div[3]/a')
-        match_popup.click()
+        try:
+            self.driver.find_element_by_xpath(
+                '//*[@id="modal-manager"]/div/div/div[1]/div/div[3]/a').click()
+        except:
+            self.driver.find_element_by_xpath(
+                '//*[@id="modal-manager"]/div/div/div/div/div[3]/a').click()
 
     def close_offer(self):
         """Close offer popup"""
         try:
-            offer_popup = self.driver.find_element_by_xpath(
-                '//*[@id="modal-manager"]/div/div/div[3]/button[2]')
-            offer_popup.click()
+            self.driver.find_element_by_xpath('//*[@id="modal-manager"]/div/div/div[3]/button[2]').click()
         except:
             pass
 

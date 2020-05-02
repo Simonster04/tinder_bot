@@ -13,6 +13,13 @@ Create a virtual enviroment fo executing the code:
 
 - `source venv/bin/activate`
 
+## Functions:
+
+- `auto_like()`
+- `auto_super()`
+- `auto_like_alt()`
+- `auto_super_alt()`
+
 ## Usage:
 
 - Download chromedriver, unzip, move to /usr/local/bin (Mac OS / Linux)
@@ -31,7 +38,7 @@ pip install foobar
 python3 -i tinder_bot.py
 ```
 
-After checking the bot's logging in was OK, execute `auto_like()` or `auto_super()` in the interactive window as below:
+After checking the bot's logging in was OK, execute a function in the interactive window as below:
 
 ```python
 >>> bot.auto_like()

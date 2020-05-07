@@ -30,7 +30,7 @@ Create a virtual enviroment fo executing the code:
 pip install foobar
 ```
 
-- Update `credentials.py` with the username and password you use in Tinder.
+- Update `credentials.py` with the username and password you use in Tinder (you must log in with a Facebook account).
 
 - Execute the code in interactive mode if you want to try the self methods by your own:
 

@@ -1,0 +1,25 @@
+men_names = ['Daniel',
+             'Javier',
+             'Fernando',
+             'Sergio',
+             'Simon',
+             'Carlos',
+             'Juan',
+             'Jeison',
+             'Jonathan',
+             'Santiago',
+             'David',
+             'Alejandro',
+             'Sebastian',
+             'Ricardo']
+
+men_bios = ['Trans',
+            'trans',
+            'TRANS',
+            'Transexuale',
+            'Transgirl',
+            'transexuale',
+            'transgirl',
+            'transexual',
+            'Transexual']
+   

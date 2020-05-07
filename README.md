@@ -32,17 +32,19 @@ pip install foobar
 
 - Update `credentials.py` with the username and password you use in Tinder.
 
-- Execute the code in interactive mode:
+- Execute the code in interactive mode if you want to try the self methods by your own:
 
 ```python
 python3 -i tinder_bot.py
 ```
 
-After checking the bot's logging in was OK, execute a function in the interactive window as below:
+or executed normally if you want to let the code does its job:
 
 ```python
->>> bot.auto_like()
+python3 tinder_bot.py
 ```
+
+```auto_like()``` is the default method and will execute automatically. You can change it at the end of `tinder_bot.py` script.
 
 ## Contributing:
 The original idea came from [Aaron](https://github.com/aj-4/), as you can check in this [video](https://www.youtube.com/watch?v=lvFAuUcowT4).

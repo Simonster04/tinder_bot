@@ -315,7 +315,7 @@ class TinderBot():
 bot = TinderBot()
 bot.login()
 sleep(6)
-print("----------------------------\nLet's begin----------------------------")
+print("----------------------------\nLet's begin\n----------------------------")
 bot.auto_swipe()
 print('----------------------------\nStatistics:')
 print(f'Likes given: {likes}')

@@ -54,7 +54,7 @@ class TinderBot():
         login_btn.click()
 
         self.driver.switch_to_window(base_window)
-        sleep(10)
+        sleep(9)
 
         popup_gps = self.driver.find_element_by_css_selector('button[aria-label="Allow"]')
         popup_gps.click()
@@ -62,7 +62,7 @@ class TinderBot():
         popup_notif = self.driver.find_element_by_css_selector('button[aria-label="Enable"]')
         popup_notif.click()
 
-        sleep(5)
+        sleep(4)
         try:
             popup_location = self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager"]/div/div/div[2]/button')
@@ -315,5 +315,11 @@ class TinderBot():
 
 bot = TinderBot()
 bot.login()
-sleep(2)
+sleep(6)
+print('----------------------------')
+print("Let's begin")
+print('----------------------------')
 bot.auto_swipe()
+print('----------------------------')
+print('We are done. You are welcome')
+print('----------------------------')

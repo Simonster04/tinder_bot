@@ -13,7 +13,11 @@ men_names = ['Daniel',
              'Sebastian',
              'Ricardo']
 
-men_bios = ['Trans',
+men_bios = ['Transgénero',
+            'transgénero',
+            'Transgenero',
+            'transgenero',
+            'Trans',
             'trans',
             'TRANS',
             'Transexuale',

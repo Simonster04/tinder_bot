@@ -4,6 +4,11 @@ from credentials import username, password
 import numpy as np
 from prohibited import men_bios, men_names
 
+likes = 0
+dislikes = 0
+superlikes = 0
+matches = 0
+
 class TinderBot():
     """Class with all the methods to automate the bot"""
 
@@ -73,14 +78,18 @@ class TinderBot():
     def like(self):
         """Click Like button"""
         self.driver.find_element_by_css_selector('button[aria-label="Like"]').click()
+        likes += 1
+
 
     def dislike(self):
         """Click Dislike button"""
         self.driver.find_element_by_css_selector('button[aria-label="Nope"]').click()
+        dislikes += 1
 
     def super_like(self):
         """Click Superlike button"""
         self.driver.find_element_by_css_selector('button[aria-label="Super Like"]').click()
+        superlikes += 1
 
     def auto_swipe(self):
         """Click Like button undefinitely (50 times in a free version Tinder account)"""
@@ -183,9 +192,11 @@ class TinderBot():
         try:
             self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager-canvas"]/div/div/div[1]/div/div[3]/a').click()
+            matches += 1
         except:
             self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager"]/div/div/div/div/div[3]/a').click()
+            matches += 1
 
     def close_offer(self):
         """Close offer popup"""
@@ -218,16 +229,10 @@ class TinderBot():
         name_list = name.split()
         if len(name_list) >= 2:
             if name_list[1] in men_names:
-                print()
-                print('ALERT!')
-                print(f"HIS name is {name_list[1]}")
-                print()
+                print(f'\nALERT!\nHIS name is {name_list[1]}\n')
                 return -1
         if name_list[0] in men_names:
-            print()
-            print('ALERT!')
-            print(f"HIS name is {name_list[0]}")
-            print()
+            print(f'\nALERT!\nHIS name is {name_list[0]}\n')
             return -1
         return 2
 
@@ -248,10 +253,7 @@ class TinderBot():
         bio = bio.split()
         for word in bio:
             if word in men_bios:
-                print()
-                print('ALERT!')
-                print(f"Found <{word}> in HIS profile")
-                print()
+                print(f'\nALERT!\nFound <{word}> in HIS profile\n')
                 return -1
         return 2
 
@@ -286,15 +288,12 @@ class TinderBot():
                     '//*[@id="content"]/div/div[1]/div/main/div[1]/div/div/div[1]/div[1]/div/div[1]/span/a[2]/div/div[2]')
                 num_pics=pics.text[-1]
             except:
-                print()
-                print('ALERT!')                
-                print("Only has one picture")
+                print('\nALERT!\nOnly has one picture')
                 aux = -1
         if aux == -1 and self.insta_pics() != -1:
             print("but has Instagram. Give her a try")
         if aux == -1 and self.insta_pics() == -1:
-            print("and no Instagram. Must be fake")
-            print()
+            print("and no Instagram. Must be fake\n")
             return -1
         return 2
  
@@ -316,10 +315,11 @@ class TinderBot():
 bot = TinderBot()
 bot.login()
 sleep(6)
-print('----------------------------')
-print("Let's begin")
-print('----------------------------')
+print("----------------------------\nLet's begin----------------------------")
 bot.auto_swipe()
-print('----------------------------')
-print('We are done. You are welcome')
-print('----------------------------')
+print('----------------------------\nStatistics:')
+print(f'Likes given: {likes}')
+print(f'Dislikes given: {dislikes}')
+print(f'Super Likes given: {superlikes}')
+print(f'matches: {matches}')
+print('----------------------------\nWe are done. Go flirt.\n----------------------------')

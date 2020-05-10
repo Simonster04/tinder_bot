@@ -4,13 +4,12 @@ from credentials import username, password
 import numpy as np
 from prohibited import men_bios, men_names
 
-likes = 0
-dislikes = 0
-superlikes = 0
-matches = 0
-
 class TinderBot():
     """Class with all the methods to automate the bot"""
+    likes = 0
+    dislikes = 0
+    superlikes = 0
+    matches = 0
 
     def __init__(self):
         """Initialize Tinder Bot: Opening Chrome"""
@@ -78,13 +77,13 @@ class TinderBot():
     def like(self):
         """Click Like button"""
         self.driver.find_element_by_css_selector('button[aria-label="Like"]').click()
-        likes += 1
+        self.likes += 1
 
 
     def dislike(self):
         """Click Dislike button"""
         self.driver.find_element_by_css_selector('button[aria-label="Nope"]').click()
-        dislikes += 1
+        self.dislikes += 1
 
     def super_like(self):
         """Click Superlike button"""
@@ -95,7 +94,7 @@ class TinderBot():
         """Click Like button undefinitely (50 times in a free version Tinder account)"""
         x = 1
         while x == 1:
-            sleep(0.5)
+            sleep(1)
             try:
                 like = self.get_all()
                 if like == -1:
@@ -192,11 +191,11 @@ class TinderBot():
         try:
             self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager-canvas"]/div/div/div[1]/div/div[3]/a').click()
-            matches += 1
+            self.matches += 1
         except:
             self.driver.find_element_by_xpath(
                 '//*[@id="modal-manager"]/div/div/div/div/div[3]/a').click()
-            matches += 1
+            self.matches += 1
 
     def close_offer(self):
         """Close offer popup"""
@@ -311,15 +310,19 @@ class TinderBot():
             return aux
         return 2
 
+    def statistics(self):
+        """ Print a summary with the final results """
+        print('----------------------------\nStatistics:')
+        print(f'Likes given: {self.likes}')
+        print(f'Dislikes given: {self.dislikes}')
+        print(f'Super Likes given: {self.superlikes}')
+        print(f'matches: {self.matches}')
+
 
 bot = TinderBot()
 bot.login()
 sleep(6)
 print("----------------------------\nLet's begin\n----------------------------")
 bot.auto_swipe()
-print('----------------------------\nStatistics:')
-print(f'Likes given: {likes}')
-print(f'Dislikes given: {dislikes}')
-print(f'Super Likes given: {superlikes}')
-print(f'matches: {matches}')
+bot.statistics()
 print('----------------------------\nWe are done. Go flirt.\n----------------------------')

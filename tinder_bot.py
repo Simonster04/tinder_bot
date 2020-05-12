@@ -2,6 +2,7 @@ from selenium import webdriver
 from time import sleep
 from credentials import username, password
 import numpy as np
+import re
 from prohibited import men_bios, men_names
 
 class TinderBot():
@@ -248,7 +249,7 @@ class TinderBot():
         if bio.text == '':
             dislike_profile = 'failed to get bio'
         bio = bio.text
-        bio = bio.split()
+        bio = re.findall(r"[\w']+", DATA)
         for word in bio:
             if word in men_bios:
                 print('\nALERT!\nFound <{}> in HIS profile\n'.format(word))

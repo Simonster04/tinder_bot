@@ -46,5 +46,8 @@ python3 tinder_bot.py
 
 ```auto_like()``` is the default method and will execute automatically. You can change it at the end of `tinder_bot.py` script.
 
+## Author:
+* Simón Parra - [Github](https://github.com/Simonster04) / [Twitter](https://twitter.com/Simonster04) / [LinkedIn](https://linkedin.com/in/simonparrah)
+
 ## Contributing:
-The original idea came from [Aaron](https://github.com/aj-4/), as you can check in this [video](https://www.youtube.com/watch?v=lvFAuUcowT4).
+The original idea came from [Aaron](https://github.com/aj-4/), as you can check in this [video](https://www.youtube.com/watch?v=lvFAuUcowT4). (I did it better XD)

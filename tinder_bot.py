@@ -3,7 +3,7 @@ from time import sleep
 from credentials import username, password
 import numpy as np
 import re
-from prohibited import men_bios, men_names
+from prohibited import bios, names
 
 class TinderBot():
     """Class with all the methods to automate the bot"""
@@ -214,7 +214,7 @@ class TinderBot():
                 '//*[@id="content"]/div/div[1]/div/div/main/div/div[1]/div/div[1]/div[3]/div[6]').click()
 
     def get_name(self):
-        """Finds if the name is on the prohibited list (men_names) and return -1, 2 otherwise"""
+        """Finds if the name is on the prohibited list (names) and return -1, 2 otherwise"""
         try:
             name = self.driver.find_element_by_xpath(
                        '//*[@id="content"]/div/div[1]/div/div/main/div/div/div[1]/div/div[2]/div[1]/div/div[1]/div[1]/h1')
@@ -227,16 +227,16 @@ class TinderBot():
         name = name.text
         name_list = name.split()
         if len(name_list) >= 2:
-            if name_list[1] in men_names:
+            if name_list[1] in names:
                 print('\nALERT!\nHIS name is {}\n'.format(name_list[1]))
                 return -1
-        if name_list[0] in men_names:
+        if name_list[0] in names:
             print('\nALERT!\nHIS name is {}\n'.format(name_list[0]))
             return -1
         return 2
 
     def get_bio(self):
-        """Finds if the bio contains a word from the prohibited list (men_bios) and return -1, 2 otherwise"""
+        """Finds if the bio contains a word from the prohibited list (bios) and return -1, 2 otherwise"""
         try:
             bio = self.driver.find_element_by_xpath(
                       '//*[@id="content"]/div/div[1]/div/div/main/div/div/div[1]/div/div[2]/div[2]/div')
@@ -251,7 +251,7 @@ class TinderBot():
         bio = bio.text
         bio = re.findall(r"[\w']+", DATA)
         for word in bio:
-            if word in men_bios:
+            if word in bios:
                 print('\nALERT!\nFound <{}> in HIS profile\n'.format(word))
                 return -1
         return 2
